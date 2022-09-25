@@ -29,42 +29,29 @@ View(fdtz)
 summary(fdtz$sepal.width)
 
 #Defining Categorize 
-#short when sepal.width<1.5 medium when petal.length>=3 but less than 4.5 long when petal.length when otherwise
+#Small when sepal.width<2, medium when sepal.width>=3 but less than 3.5, when sepal.width is large. 
 
+#Selection
+CatSepalWidth=c()
 
-
-# > Step 1: Finding Absolute Frequency 
-AbsFreqz=table(fdtz$size)
-AbsFreqz
-
-# > Step 2: Finding Relative Frequency 
-RelFreqz=prop.table(AbsFreqz)
-RelFreqz
-
-#Round off the optimal numbers
-RelFreqz=round(prop.table(AbsFreqz),2)
-RelFreqz
-
-# > Step 3: Finding Cumulative Frequency 
-CumFreqz=cumsum(RelFreqz)
-CumFreqz
-
-# > Step 4: Putting all frequencies into one. 
-fdtSize=cbind(AbsFreqz, RelFreqz, CumFreqz)
-fdtSize
-
-# > Step 5: Creating a Function 
-fdtAZ=function(x){
-  AbsFreqz=table(x)
-  RelFreqz=round(prop.table(AbsFreqz),2)
-  CumFreqz=cumsum(RelFreqz)
-  fdtaz=cbind(AbsFreqz, RelFreqz, CumFreqz)
-  return(fdtaz)
+for(az in 1:length(fdtz$sepal.width) ) {
+  if(fdtz$sepal.width[az]<=2){
+   CatSepalWidth[az]="Small"
+  }else if(fdtz$sepal.width[az]>3 &  fdtz$sepal.width[az]<=3.5){
+    CatSepalWidth[az]="medium "
+  }else {
+    CatSepalWidth[az]="large"
+  }
 }
 
-# > Step 5: Testing the Function
-fdtAZ(fdtz$sex)
-fdtAZ(fdtz$tip)
-fdtAZ(fdtz$smoker)
-fdtAZ(fdtz$size)
-fdtAZ((fdtz$day))
+head(CatSepalWidth)
+
+# Now we are combining the variable with numbers
+SepalAmount = cbind(fdtz$sepal.width,CatSepalWidth)
+View(SepalAmount)
+
+# Calling the FDT Function / Constructing FDT for IRIS of Sepal.Width
+fdtAZ(CatSepalWidth)
+
+
+----------------------------------------------------------------------------------------------------
