@@ -1,12 +1,15 @@
-# Septerber 24, 2022
+# Septerber 25, 2022
 # Ahmad Zaheen Tahiri
 # Dr. Asadullah Jawid
 # Assignment: FDT
 # ITC 255 - Section 1
 
-# -------------------Descriptive Methods ------------------------#
+# --------------->    Descriptive Methods    <-------------------#
+# --------------->        Univar Case        <-------------------#
+# --------------->          FDT              <-------------------#
+# --------------->    Numerical Variables    <-------------------#
 
-#-----------------------Instruction------------------------------#
+#------------------>       Instruction       <----------------------#
 
 # 1. Upload the dataset iris from the web 
 # 2. Choose a numerical variable  and construct its FDT
@@ -15,13 +18,21 @@
 #    Note: no direct submission needed. 
 
 
-#--------------------------Solution-------------------------------#
+#------------------>       Solution       <----------------------#
 
 # ANSWER 1: We take the URL of IRIS from the website and use the fucntion of read.csv to open it in R. 
-fdtz=read.csv("https://raw.githubusercontent.com/ajawid158/statDataAnalysis/main/iris.csv")
+fdtz=read.csv("https://gist.githubusercontent.com/netj/8836201/raw/6f9306ad21398ea43cba4f7d537619d0e07d5ae3/iris.csv")
 head(fdtz)
+View(fdtz)
 
-# ANSWER 2: I am going to choose SIZE as my numerical variable. 
+# ANSWER 2: I am going to choose sepal.width as my numerical variable. 
+summary(fdtz$sepal.width)
+
+#Defining Categorize 
+#short when sepal.width<1.5 medium when petal.length>=3 but less than 4.5 long when petal.length when otherwise
+
+
+
 # > Step 1: Finding Absolute Frequency 
 AbsFreqz=table(fdtz$size)
 AbsFreqz
